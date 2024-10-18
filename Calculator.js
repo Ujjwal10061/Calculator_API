@@ -1,34 +1,36 @@
-public class SimpleCalculator {
+def add(a, b):
+    return a + b
+
+def subtract(a, b):
+    return a - b
+
+def multiply(a, b):
+    return a * b
+
+def divide(a, b):
+    if b == 0:
+        print("Division by zero!")  # Issue: Should raise an exception instead of printing
+        return None
+    return a / b
+
+def calculate():
+    operation = input("Enter operation (+, -, *, /): ")
+    num1 = input("Enter first number: ")
+    num2 = input("Enter second number: ")
     
-    // Method to add two numbers
-    public double add(double a, double b) {
-        return a + b;
-    }
+    # Intentional error: inputs are not converted to float
+    if operation == '+':
+        result = add(num1, num2)  
+    elif operation == '-':
+        result = subtract(num1, num2)
+    elif operation == '*':
+        result = multiply(num1, num2)
+    elif operation == '/':
+        result = divide(num1, num2)
+    else:
+        print("Invalid operation")
+        return
 
-    // Method to subtract two numbers
-    public double subtract(double a, double b) {
-        return a - b;
-    }
+    print(f"Result: {result}")
 
-    // Method to multiply two numbers
-    public double multiply(double a, double b) {
-        return a * b;
-    }
-
-    // Method to divide two numbers
-    public double divide(double a, double b) {
-        if (b == 0) {
-            throw new IllegalArgumentException("Cannot divide by zero");
-        }
-        return a / b;
-    }
-
-    // Main method to run some calculations
-    public static void main(String[] args) {
-        SimpleCalculator calculator = new SimpleCalculator();
-        System.out.println("Addition: " + calculator.add(5, 3));
-        System.out.println("Subtraction: " + calculator.subtract(5, 3));
-        System.out.println("Multiplication: " + calculator.multiply(5, 3));
-        System.out.println("Division: " + calculator.divide(5, 0)); // This will cause an error
-    }
-}
+calculate()
